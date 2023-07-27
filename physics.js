@@ -49,7 +49,27 @@ function setupBird(){
 }
 ////////////////////////////////////////////////////////////////
 function drawBirds(){
+  push();
+  //It draws birds where ever the mouse is pointed at
+  //The birds is drawn when user clicks on "b"
+  //It removes the birds from the screen when they leave the canvas
+ 
+    for(let i=0; i<birds.length; i++){
+      const position=birds[i].position;
+      drawVertices(birds[i].vertices);
+      //Changes ther style  of the object into a picture
+      imageMode(CENTER)   
+      image(birdImage, position.x, position.y, 50, 60)
+      
+      if(isOffScreen(birds[i])){
+        removeFromWorld(birds[i]);
+        birds.splice(i, 1);
+        i--;
+      }
+    }
+    
   
+  pop();
 }
 ////////////////////////////////////////////////////////////////
 //creates a tower of boxes
