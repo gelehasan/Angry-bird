@@ -107,12 +107,37 @@ function drawTower(){
 }
 ////////////////////////////////////////////////////////////////
 function setupSlingshot(){
+//creates a circular body representing the slingshot bird
+//sets its mass to be 10 times its original value
+//then creates a constraint that connects the bird to a fixed point
+slingshotBird = Bodies.circle(200, 150, 20, {
+  friction: 0,
+  restitution: 0.95
+});
+Matter.Body.setMass(slingshotBird, slingshotBird.mass * 10);
 
+slingshotConstraint = Constraint.create({
+  pointA: { x: 200, y: 180 },
+  bodyB: slingshotBird,
+  stiffness: 0.01,
+  damping: 0.0001
+});
+World.add(engine.world, [slingshotBird, slingshotConstraint]);
 }
 ////////////////////////////////////////////////////////////////
 //draws slingshot bird and its constraint
 function drawSlingshot(){
+  push();
+  //getting the postion so the bird is displayed in the right place
+  const point = slingshotBird.position;
 
+  drawVertices(slingshotBird.vertices);
+  //displays the bird image
+  imageMode(CENTER);
+  image(birdImage, point.x, point.y, 80, 80);
+  
+  drawConstraint(slingshotConstraint, "white");
+  pop();
 }
 
 
