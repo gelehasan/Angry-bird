@@ -93,7 +93,17 @@ function setupTower(){
 //draws tower of boxes
 function drawTower(){
   //Loops over the boxes that has been pushed and draws them on the screen
-
+  push();
+  for (var i = 0; i < boxes.length; i++) {
+    fill(colors[i]);
+    strokeWeight(5);
+    stroke(50);
+    drawVertices(boxes[i].vertices);
+    strokeWeight(5);
+    stroke(0);
+   
+  }
+  pop();
 }
 ////////////////////////////////////////////////////////////////
 function setupSlingshot(){
