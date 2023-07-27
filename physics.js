@@ -77,7 +77,17 @@ function setupTower(){
 
   //Creates a tower thats high 6 like the provided image in the coursework
   
- 
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 6; j++) {
+      const box = Bodies.rectangle(800+i*80, 400-j*80, 80, 80);
+      boxes.push(box);
+      const shade = random(50, 200); 
+    const greenColor = color(0, shade, 0);
+      colors.push(greenColor)   
+    }
+  }
+  // Add boxes to the world
+  World.add(engine.world, boxes);
 }
 ////////////////////////////////////////////////////////////////
 //draws tower of boxes
