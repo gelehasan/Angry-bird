@@ -41,7 +41,11 @@ function drawPropeller(){
 }
 ////////////////////////////////////////////////////////////////
 function setupBird(){
- 
+  var bird = Bodies.circle(mouseX, mouseY, 20, {friction: 0,
+      restitution: 0.95 });
+  Matter.Body.setMass(bird, bird.mass*10);
+  World.add(engine.world, [bird]);
+  birds.push(bird);
 }
 ////////////////////////////////////////////////////////////////
 function drawBirds(){
