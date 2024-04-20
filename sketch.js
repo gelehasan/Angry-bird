@@ -1,4 +1,3 @@
-// Example is based on examples from: http://brm.io/matter-js/, https://github.com/shiffman/p5-matter
 // add also Benedict Gross credit
 
 var Engine = Matter.Engine;
